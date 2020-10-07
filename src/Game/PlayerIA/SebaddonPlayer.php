@@ -7,7 +7,7 @@ use Hackathon\Game\Result;
 /**
  * Class SebaddonPlayers
  * @package Hackathon\PlayerIA
- * @author YOUR NAME HERE
+ * @author Camille
  */
 class SebaddonPlayer extends Player
 {
@@ -42,10 +42,24 @@ class SebaddonPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
+        //$opponentSide = $this->result->getChoicesFor($this->opponentSide);
+        
+        //foreach($opponentSide as $val)
+        //{
+          
+        //}
+
         $result = $this->result->getLastChoiceFor($this->opponentSide);
 
         if ($result == 0)
-          $result = parent::paperChoice();
+          return parent::paperChoice();
+
+        if ($result == parent::paperChoice())
+          return parent::scissorsChoice();
+        if ($result == parent::scissorsChoice())
+          return parent::rockChoice();
+        if ($result == parent::rockChoice())
+          return parent::paperChoice();
 
         return $result;
     }
