@@ -9,7 +9,7 @@ use Hackathon\Game\Result;
  * @package Hackathon\PlayerIA
  * @author Camille Louis
  * 
- * Si je me retrouve à égalité, je joue deux fois l'inverse du move que je viens de faire.
+ * Je joue deux fois l'inverse du move que je viens de faire.
  * 
  */
 class SebaddonPlayer extends Player
@@ -58,15 +58,12 @@ class SebaddonPlayer extends Player
       $round = $this->result->getNbRound();
       $last_score = $this->result->getLastScoreFor($this->mySide);
 
-      //if ($last_score == 1)
-      //{
-        if ($result == parent::paperChoice())
-          return parent::rockChoice();
-        if ($result == parent::rockChoice())
-          return parent::scissorsChoice();
-        if ($result == parent::scissorsChoice())
-          return parent::paperChoice();
-      //}
+      if ($result == parent::paperChoice())
+        return parent::rockChoice();
+      if ($result == parent::rockChoice())
+        return parent::scissorsChoice();
+      if ($result == parent::scissorsChoice())
+        return parent::paperChoice();
 
       return $result;
     }
