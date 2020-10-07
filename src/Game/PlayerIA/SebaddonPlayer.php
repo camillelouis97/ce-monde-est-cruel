@@ -49,18 +49,22 @@ class SebaddonPlayer extends Player
           
         //}
 
-        $result = $this->result->getLastChoiceFor($this->opponentSide);
+      $result = $this->result->getLastChoiceFor($this->opponentSide);
+      $mySide = $this->result->getLastChoiceFor($this->mySide);
 
-        if ($result == 0)
-          return parent::paperChoice();
+      if ($result == 0)
+        return parent::paperChoice();
 
-        if ($result == parent::paperChoice())
-          return parent::scissorsChoice();
-        if ($result == parent::scissorsChoice())
-          return parent::rockChoice();
-        if ($result == parent::rockChoice())
-          return parent::paperChoice();
+      if ($result == $mySide)
+          return $result;
 
-        return $result;
+      if ($result == parent::paperChoice())
+        return parent::scissorsChoice();
+      if ($result == parent::scissorsChoice())
+        return parent::rockChoice();
+      if ($result == parent::rockChoice())
+        return parent::paperChoice();
+
+      return $result;
     }
 };
