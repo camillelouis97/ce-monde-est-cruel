@@ -55,7 +55,7 @@ class SebaddonPlayer extends Player
       $round = $this->result->getNbRound();
       $last_score = $this->result->getLastScoreFor($this->mySide);
 
-      if ($last_score == 1 || $last_score == 0)
+      if ($last_score == 1)
       {
         if ($result == parent::paperChoice())
           return parent::rockChoice();
