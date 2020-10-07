@@ -49,11 +49,21 @@ class SebaddonPlayer extends Player
       if ($result == 0)
         return parent::paperChoice();
 
-      $scis = $this->result->getStatsFor($this->opponentSide)[1];
-      $paper = $this->result->getStatsFor($this->opponentSide)[2];
-      $ro = $this->result->getStatsFor($this->opponentSide)[3];
+      $nb_scissors = $this->result->getStatsFor($this->opponentSide)[1];
+      $nb_paper = $this->result->getStatsFor($this->opponentSide)[2];
+      $nb_rock = $this->result->getStatsFor($this->opponentSide)[3];
       $round = $this->result->getNbRound();
+      $last_score = $this->result->getLastScoreFor($this->mySide);
 
+      if ($last_score == 1)
+      {
+        if ($result == parent::paperChoice())
+          return parent::rockChoice();
+        if ($result == parent::rockChoice())
+          return parent::scissorsChoice();
+        if ($result == parent::scissorsChoice())
+          return parent::paperChoice();
+      }
       //if (!($scis == $round || $ro == $round || $paper == $round))
       //{
       //  if ($result == $mySide)
