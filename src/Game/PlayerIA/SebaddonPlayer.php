@@ -55,7 +55,7 @@ class SebaddonPlayer extends Player
       $round = $this->result->getNbRound();
       $last_score = $this->result->getLastScoreFor($this->mySide);
 
-      if ($last_score == 1)
+      if ($last_score == 1 || $last_score == 0)
       {
         if ($result == parent::paperChoice())
           return parent::rockChoice();
@@ -64,18 +64,6 @@ class SebaddonPlayer extends Player
         if ($result == parent::scissorsChoice())
           return parent::paperChoice();
       }
-      //if (!($scis == $round || $ro == $round || $paper == $round))
-      //{
-      //  if ($result == $mySide)
-      //    return $result;
-      //} 
-
-      if ($result == parent::paperChoice())
-        return parent::scissorsChoice();
-      if ($result == parent::scissorsChoice())
-        return parent::rockChoice();
-      if ($result == parent::rockChoice())
-        return parent::paperChoice();
 
       return $result;
     }
