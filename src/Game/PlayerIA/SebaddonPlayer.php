@@ -42,12 +42,6 @@ class SebaddonPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        //$opponentSide = $this->result->getChoicesFor($this->opponentSide);
-        
-        //foreach($opponentSide as $val)
-        //{
-          
-        //}
 
       $result = $this->result->getLastChoiceFor($this->opponentSide);
       $mySide = $this->result->getLastChoiceFor($this->mySide);
@@ -55,8 +49,16 @@ class SebaddonPlayer extends Player
       if ($result == 0)
         return parent::paperChoice();
 
-      if ($result == $mySide)
+      $scis = $this->result->getStatsFor($this->opponentSide)[1];
+      $paper = $this->result->getStatsFor($this->opponentSide)[2];
+      $ro = $this->result->getStatsFor($this->opponentSide)[3];
+      $round = $this->result->getNbRound();
+
+      if (!($scis == $round || $ro == $round || $paper == $round))
+      {
+        if ($result == $mySide)
           return $result;
+      } 
 
       if ($result == parent::paperChoice())
         return parent::scissorsChoice();
