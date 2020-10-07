@@ -54,11 +54,11 @@ class SebaddonPlayer extends Player
       $ro = $this->result->getStatsFor($this->opponentSide)[3];
       $round = $this->result->getNbRound();
 
-      if (!($scis == $round || $ro == $round || $paper == $round))
-      {
-        if ($result == $mySide)
-          return $result;
-      } 
+      //if (!($scis == $round || $ro == $round || $paper == $round))
+      //{
+      //  if ($result == $mySide)
+      //    return $result;
+      //} 
 
       if ($result == parent::paperChoice())
         return parent::scissorsChoice();
